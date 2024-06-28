@@ -1,0 +1,49 @@
+﻿@model Ispit.Todo._28062024.Models.ViewModels.ListTaskViewModel
+
+@{
+    ViewData["Title"] = "GetAllTasks";
+}
+
+<h1>GetAllTasks</h1>
+
+
+@Html.ActionLink("Dodaj", "AddTask", new { toDoListId = Model.ToDoListId})
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+               Status
+            </th>
+            <th>
+               Naziv
+            </th>
+            <th>
+                ToDoListId
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.List) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                    @Html.ActionLink("Gotov", "RegulateStatus", new { id=item.Id }) 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
